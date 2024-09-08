@@ -125,8 +125,6 @@
     }
     ?>
 
-    <!-- Display Uploaded Images with Edit/Delete/Replace Options -->
-    <h2>Edit/Delete/Replace Artwork</h2>
     <div class="gallery">
         <?php
         // Load images from the 'uploads' folder
@@ -135,7 +133,7 @@
         foreach ($images as $image) {
             $filename = basename($image);
             echo '<div class="img_container">';
-            echo '<img src="' . $image . '" alt="Artwork" style="width: 200px; height: auto;">';
+            echo '<img src="' . $image . '" alt="Artwork" style="width: 300px; height: auto;">';
             
             // Edit Title and Caption Form
             echo '<form method="POST" action="admin.php">';
