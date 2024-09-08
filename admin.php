@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/admin.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <title>Admin Panel - Ashfolio</title>
 </head>
 <body>
@@ -21,9 +18,12 @@
             <div id="previewContainer" style="display: none;">
                 <img id="imagePreview" src="" alt="Image Preview">
             </div>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
             
             <label for="caption">Caption:</label>
-            <input type="text" id="caption" name="caption">
+            <input type="text" id="caption" name="caption" required>
             
             <input type="submit" name="upload" value="Upload Image">
         </form>
@@ -37,7 +37,7 @@
     if (!file_exists($desc_file)) {
         file_put_contents($desc_file, json_encode([]));
     }
-    
+
     // Load existing descriptions
     $descriptions = json_decode(file_get_contents($desc_file), true);
 
@@ -55,9 +55,13 @@
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                     echo "The file " . basename($_FILES["image"]["name"]) . " has been uploaded.<br>";
                     
-                    // Save the description
+                    // Save the title and description
+                    $title = $_POST['title'];
                     $caption = $_POST['caption'];
-                    $descriptions[basename($_FILES["image"]["name"])] = $caption;
+                    $descriptions[basename($_FILES["image"]["name"])] = [
+                        'title' => $title,
+                        'caption' => $caption
+                    ];
                     file_put_contents($desc_file, json_encode($descriptions, JSON_PRETTY_PRINT));
                 } else {
                     echo "Sorry, there was an error uploading your file.<br>";
@@ -103,22 +107,26 @@
         }
     }
 
-    // Handle Description Edit
+    // Handle Title and Caption Edit
     if (isset($_POST['edit'])) {
         $filename = $_POST['filename'];
-        $new_desc = $_POST['new_desc'];
+        $new_title = $_POST['new_title'];
+        $new_caption = $_POST['new_caption'];
         if (isset($descriptions[$filename])) {
-            $descriptions[$filename] = $new_desc;
+            $descriptions[$filename] = [
+                'title' => $new_title,
+                'caption' => $new_caption
+            ];
             file_put_contents($desc_file, json_encode($descriptions, JSON_PRETTY_PRINT));
-            echo "Description for " . $filename . " updated to: " . $new_desc . "<br>";
+            echo "Details for " . $filename . " updated.<br>";
         } else {
-            echo "No description found for the file.<br>";
+            echo "No details found for the file.<br>";
         }
     }
     ?>
 
     <!-- Display Uploaded Images with Edit/Delete/Replace Options -->
-     <br>
+    <h2>Edit/Delete/Replace Artwork</h2>
     <div class="gallery">
         <?php
         // Load images from the 'uploads' folder
@@ -129,10 +137,11 @@
             echo '<div class="img_container">';
             echo '<img src="' . $image . '" alt="Artwork" style="width: 200px; height: auto;">';
             
-            // Edit Description Form
+            // Edit Title and Caption Form
             echo '<form method="POST" action="admin.php">';
             echo '<input type="hidden" name="filename" value="' . $filename . '">';
-            echo '<input type="text" name="new_desc" placeholder="Edit description..." value="' . (isset($descriptions[$filename]) ? $descriptions[$filename] : '') . '">';
+            echo '<input type="text" name="new_title" placeholder="Edit title..." value="' . (isset($descriptions[$filename]['title']) ? $descriptions[$filename]['title'] : '') . '">';
+            echo '<input type="text" name="new_caption" placeholder="Edit caption..." value="' . (isset($descriptions[$filename]['caption']) ? $descriptions[$filename]['caption'] : '') . '">';
             echo '<input type="submit" name="edit" value="Edit">';
             echo '</form>';
 

@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="link_div">
-                <a href="https://www.instagram.com/ashromit17/" target=”_blank”><img src="./styles/icons/insta.png" style="width: 30px;"></a>
-                <a href="https://pin.it/4g32GfBMc" target=”_blank”><img src="./styles/icons/pinterest.png" style="width: 30px;"></a>
-                <a href="https://opensea.io/ashromit17 " target=”_blank”><img src="./styles/icons/opensea.png" style="width: 30px; "></a>
+                <a href="https://www.instagram.com/ashromit17/" target="_blank"><img src="./styles/icons/insta.png" style="width: 30px;"></a>
+                <a href="https://pin.it/4g32GfBMc" target="_blank"><img src="./styles/icons/pinterest.png" style="width: 30px;"></a>
+                <a href="https://opensea.io/ashromit17" target="_blank"><img src="./styles/icons/opensea.png" style="width: 30px;"></a>
             </div>
         </div>
     </header>
@@ -44,16 +44,24 @@
             $dir = './uploads/';
             $images = glob($dir . "*.{jpg,png,jpeg,gif}", GLOB_BRACE);
 
-            // Display each image with its description
+            // Display each image with its title and caption
             foreach ($images as $image) {
                 $filename = basename($image);
                 echo '<div class="img_container">';
                 echo '<img src="' . $image . '" alt="Artwork">';
-                
-                // Display description if available, otherwise a default message
-                $description = isset($descriptions[$filename]) ? $descriptions[$filename] : "No description available";
+
+                // Display title and caption if available
+                if (isset($descriptions[$filename])) {
+                    $title = $descriptions[$filename]['title'];
+                    $caption = $descriptions[$filename]['caption'];
+                } else {
+                    $title = "Untitled";
+                    $caption = "No description available.";
+                }
+
                 echo '<div class="info">';
-                echo '<p>' . $description . '</p>';
+                echo '<h3>' . htmlspecialchars($title) . '</h3>'; // Display title
+                echo '<p>' . htmlspecialchars($caption) . '</p>'; // Display caption
                 echo '</div>';
                 echo '</div>';
             }
@@ -67,7 +75,7 @@
         <div class="main_foot">
             <div class="foot">
                 <span>© 2024 Ashfolio</span>
-                <span>Contact: <a href="mailto:ashromit3@gmail.com" style="color: (59, 144, 255);">ashromit3@gmail.com</a></span>
+                <span>Contact: <a href="mailto:ashromit3@gmail.com" style="color: rgb(59, 144, 255);">ashromit3@gmail.com</a></span>
                 <span>Developed by <a href="https://github.com/SusyBegula">Susybegula</a></span>
             </div>
         </div>
