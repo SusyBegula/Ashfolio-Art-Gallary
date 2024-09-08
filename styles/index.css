@@ -1,0 +1,178 @@
+body{
+    background-color: #ffffff   ;
+    font-family: Nunito;
+    margin: 0%;
+    padding: 0%;
+    color: rgb(209, 209, 209);
+}
+
+
+/* Custom scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+    width: 7px; /* Width of the scrollbar */
+    height: 7px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Background of the track */
+    border-radius: 10px; /* Rounded corners of the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll thumb */
+    border-radius: 10px; /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb when hovered */
+}
+
+
+header h1{
+    text-indent: 30px;
+    color: black;
+    text-shadow: 1px 1px 2px rgb(99, 99, 99);
+}
+
+.header_container {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    padding: 15px;
+    position: relative; /* Ensures child absolute positioning is relative to the header */
+}
+
+.header_container .link_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Take it out of the normal flow */
+    right: 0;
+    padding: 20px;
+    margin-top: 15px;
+    margin-right: 50px;
+}
+
+.link_div img{
+    margin: 5px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, color 0.3s ease; /* Added transition for smoother scaling */
+}
+
+.link_div img:hover{
+    transform: scale(1.1);
+}
+
+
+.nav_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Take it out of the normal flow */
+    left: 50%; /* Move the element to the center */
+    padding: 20px;
+    margin-top: 5px;
+    transform: translateX(-50%); /* Correct for its width */
+}
+
+.navbar{
+    width: fit-content;
+    height: 70%;
+    background-color: #363636;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px 0px black;
+}
+
+.navbar span {
+    margin: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease; /* Added transition for smoother scaling */
+}
+
+.navbar span:hover {
+    transform: scale(1.1);
+    color: #ffffff; /* You can also add a color change for a more interactive feel */
+}
+
+.main_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90%;
+}
+
+.img_container{
+    position: relative; /* Positioning context for the .info div */
+    width: fit-content; /* Adjusts the width of the container */
+    display: flex; /* Aligns items within the container */
+    justify-content: center;
+    border-radius: 20px;
+    margin: 50px;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.info {
+    position: absolute; /* Absolute positioning within the .img_container */
+    bottom: 0; /* Position at the bottom of the container */
+    left: 0; /* Align to the left of the container */
+    width: 100%; /* Span full width of the image */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* Text color */
+    box-sizing: border-box; /* Include padding in width calculation */
+    border-radius: 20px;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transitions */
+    cursor: default;
+}
+
+.img_container:hover .info {
+    opacity: 1; /* Show the .info div on hover */
+    visibility: visible; /* Ensure the .info div is visible */
+}
+
+.img_container img{
+    height: 600px;
+    border-radius: 20px;
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 5px 5px 10px 0px black;
+    display: block; /* Remove bottom space */
+    width: 100%; /* Ensure image scales to container width */
+}
+
+.img_container:hover img{
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
+.foot{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    text-align: center;
+    padding: 50px;
+    width: 40%;
+}
+
+.foot a{
+    color: rgb(59, 144, 255);
+    text-decoration: none;
+}
+
+.main_foot{
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+

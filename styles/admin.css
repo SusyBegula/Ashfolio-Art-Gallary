@@ -1,0 +1,126 @@
+/* Reset some default styles */
+body, h1, h2, p, form, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Nunito;
+}
+
+/* General body styling */
+body {
+    font-family: Nunito;
+    background-color: #ffffff;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form styling */
+form {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+}
+
+/* Form labels and inputs */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+form input[type="file"],
+form input[type="text"],
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input[type="file"] {
+    padding: 8px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Gallery container */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Image container styling */
+.img_container {
+    position: relative;
+    width: 200px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.img_container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img_container form {
+    margin: 10px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img_container {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Other styles */
+
+#previewContainer {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#imagePreview {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
