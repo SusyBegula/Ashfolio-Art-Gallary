@@ -120,6 +120,7 @@ header h1{
     margin: 50px;
     text-align: center;
     transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    cursor: pointer;
 }
 
 .info {
@@ -134,7 +135,7 @@ header h1{
     opacity: 0; /* Initially hidden */
     visibility: hidden; /* Initially hidden */
     transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transitions */
-    cursor: default;
+    cursor: pointer;;
 }
 
 .img_container:hover .info {

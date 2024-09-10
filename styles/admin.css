@@ -118,7 +118,7 @@ form input[type="submit"]:hover {
 }
 
 #imagePreview {
-    max-width: 100%;
+    width: 400px;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 8px;
