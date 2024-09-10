@@ -44,6 +44,14 @@ form input[type="submit"] {
     margin-bottom: 10px;
 }
 
+#caption{
+    width: 100%;
+}
+
+form textarea{
+    width: 100%;
+}
+
 form input[type="file"] {
     padding: 8px;
 }

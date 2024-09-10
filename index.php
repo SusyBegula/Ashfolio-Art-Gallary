@@ -117,11 +117,11 @@
                 $short_caption = strlen($caption) > 250 ? substr($caption, 0, 250) . '...' : $caption;
 
                 // Display image with title and short caption
-                echo '<img src="' . $image . '" alt="Artwork" class="clickable_image" data-title="' . htmlspecialchars($title) . '" data-caption="' . htmlspecialchars($caption) . '">';
+                echo '<img src="' . $image . '" alt="Artwork" class="clickable_image" data-title="' . htmlspecialchars($title) . '" data-caption="' . htmlspecialchars(nl2br($caption)) . '">';
 
                 echo '<div class="info">';
                 echo '<h3>' . htmlspecialchars($title) . '</h3>'; // Display title
-                echo '<p>' . htmlspecialchars($short_caption) . '</p>'; // Display short caption (250 characters)
+                echo '<p>' . nl2br(htmlspecialchars($short_caption)) . '</p>'; // Display short caption with newlines
                 echo '</div>';
                 echo '</div>';
             }
@@ -176,7 +176,7 @@
                 modal.style.display = "block";
                 modalImg.src = this.src;
                 modalTitle.textContent = this.getAttribute("data-title");
-                modalCaption.textContent = this.getAttribute("data-caption"); // Display full caption in modal
+                modalCaption.innerHTML = this.getAttribute("data-caption"); // Use innerHTML to preserve <br> tags
             }
         }
 

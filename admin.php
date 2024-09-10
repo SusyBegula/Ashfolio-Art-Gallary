@@ -23,7 +23,7 @@
             <input type="text" id="title" name="title" required>
             
             <label for="caption">Caption:</label>
-            <input type="text" id="caption" name="caption" required>
+            <textarea id="caption" name="caption" rows="4" cols="50" placeholder="Enter your caption here..." required></textarea><br>
             
             <input type="submit" name="upload" value="Upload Image">
         </form>
@@ -139,7 +139,7 @@
             echo '<form method="POST" action="admin.php">';
             echo '<input type="hidden" name="filename" value="' . $filename . '">';
             echo '<input type="text" name="new_title" placeholder="Edit title..." value="' . (isset($descriptions[$filename]['title']) ? $descriptions[$filename]['title'] : '') . '">';
-            echo '<input type="text" name="new_caption" placeholder="Edit caption..." value="' . (isset($descriptions[$filename]['caption']) ? $descriptions[$filename]['caption'] : '') . '">';
+            echo '<textarea name="new_caption" rows="4" cols="50" placeholder="Edit caption...">' . (isset($descriptions[$filename]['caption']) ? $descriptions[$filename]['caption'] : '') . '</textarea>';
             echo '<input type="submit" name="edit" value="Edit">';
             echo '</form>';
 
